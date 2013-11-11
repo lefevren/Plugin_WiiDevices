@@ -500,9 +500,9 @@ class CryVR_WiimoteBatteryLevel : public CFlowBaseNode<eNCT_Instanced>
 
 
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:BatteryLevel",  CryVR_WiimoteBatteryLevel );
-REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Stop_Plugin", CFlowWiimoteStop );
-REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:IR_Plugin",  CryVR_WiimoteIR );
-REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Rumble_Plugin",  CryVR_WiimoteRumble );
+REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Stop", CFlowWiimoteStop );
+REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:IR",  CryVR_WiimoteIR );
+REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Rumble",  CryVR_WiimoteRumble );
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:MotionSensing",  CryVR_WiimoteMotionSensing );
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Setup", CFlowWiimoteSetup );
 
