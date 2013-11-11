@@ -9,13 +9,15 @@ Lastest version can be found here : https://github.com/lefevren/Plugin_WiiDevice
 This plugin is a part of a larger project : CryVR. For more information : https://github.com/lefevren/CryVR
 
 
-Installation / Integration
+Installation / Integration / Needs
 ==========================
 Copy the dll files contained in dll directory in the Bin32 and Bin64 CryEngine 3.5.4 directory.
 
 The plugin manager (https://github.com/hendrikp/Plugin_SDK) will automatically load up the plugin when the game/editor is restarted or if you directly load it.
 
 Install Wiiuse.dll inside both bin32 and bin64 directory to make it works.
+
+To make it more usable, use the OneEuro filters nodes contained in the CryVR project (https://github.com/lefevren/CryVR)
 
 
 Flownodes
