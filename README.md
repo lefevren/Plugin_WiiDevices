@@ -11,9 +11,9 @@ This plugin is a part of a larger project : CryVR. For more information : https:
 
 Installation / Integration
 ==========================
-Use the installer or extract the files to your CryEngine SDK Folder so that the Code and BinXX/Plugins directories match up.
+Copy the dll files contained in dll directory in the Bin32 and Bin64 CryEngine 3.5.4 directory.
 
-The plugin manager will automatically load up the plugin when the game/editor is restarted or if you directly load it.
+The plugin manager (https://github.com/hendrikp/Plugin_SDK) will automatically load up the plugin when the game/editor is restarted or if you directly load it.
 
 Install Wiiuse.dll inside both bin32 and bin64 directory to make it works.
 
@@ -21,13 +21,13 @@ Install Wiiuse.dll inside both bin32 and bin64 directory to make it works.
 Flownodes
 =========
 
-Wiimote Manager : Needed as the first active node. Initialize connection with bluetooth stack. 
-Wiimote Balance Board / Classic / Guitar Hero / Controler nodes : For now, just one at a time. Use this to retrieve devices values inside your flowgraph.
-Wiimote Battery Level : Retreive battery level of the connected device.
-Wiimote IR : Activate / Deactivate / Get IR state.
-Wiimote Rumble : Toogle Rumble for the given device.
-Wiimote Motion Sensing : Activate or deactivate motion sensing for the connected device (off by default)
-Wiimote Setup : Setup wiimote detection events.
+Manager : Needed as the first active node. Initialize connection with bluetooth stack. 
+Balance Board / Classic / Guitar Hero / Controler nodes : For now, just one at a time. Use this to retrieve devices values inside your flowgraph.
+Battery Level : Retreive battery level of the connected device.
+IR : Activate / Deactivate / Get IR state.
+Rumble : Toogle Rumble for the given device.
+Motion Sensing : Activate or deactivate motion sensing for the connected device (off by default)
+Setup : Setup wiimote detection events.
 
 Notes :
 =================
