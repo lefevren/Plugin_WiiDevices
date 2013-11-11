@@ -8,6 +8,8 @@ Lastest version can be found here : https://github.com/lefevren/Plugin_WiiDevice
 
 This plugin is a part of a larger project : CryVR. For more information : https://github.com/lefevren/CryVR
 
+See wiki to learn more : https://github.com/lefevren/Plugin_WiiDevices/wiki
+
 
 Installation / Integration / Needs
 ==========================
