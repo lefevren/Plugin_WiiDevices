@@ -21,7 +21,7 @@ class CFlowWiimoteSetup : public CFlowBaseNode<eNCT_Instanced>
 {
         enum EInputPorts
         {
-            EIP_IsServer = 0,
+            EIP_Activate = 0,
             EIP_WiimoteID = 1,
             EIP_WiimoteThreshold = 2,
             EIP_WiimoteAngle = 3,
@@ -72,7 +72,7 @@ class CFlowWiimoteSetup : public CFlowBaseNode<eNCT_Instanced>
             // Fill in configuration
             config.pInputPorts = inputs;
             config.pOutputPorts = outputs;
-            config.sDescription = _HELP( "FG node that set wiimote nodes" );
+            config.sDescription = _HELP( "FG node that setup WiiDevices nodes" );
             config.SetCategory( EFLN_APPROVED );
         }
 
@@ -143,7 +143,7 @@ class CryVR_WiimoteMotionSensing : public CFlowBaseNode<eNCT_Instanced>
             {
                 InputPortConfig<bool>( "Set", _HELP( "Activate" ) ),
                 InputPortConfig<int>( "WiimoteID", _HELP( "Wiimote id" ) ),
-                InputPortConfig<bool>( "Value", _HELP( "Activate / Deactivate" ) ),
+                InputPortConfig<bool>( "Value", _HELP( "Activate [0]/ Deactivate [1]" ) ),
                 {0},
             };
 
@@ -214,7 +214,7 @@ class CryVR_WiimoteRumble : public CFlowBaseNode<eNCT_Instanced>
             // Define input ports here, in same order as EInputPorts
             static const SInputPortConfig inputs[] =
             {
-                InputPortConfig<bool>( "Toogle", _HELP( "Activate" ) ),
+                InputPortConfig<bool>( "Toogle", _HELP( "Toogle" ) ),
                 InputPortConfig<int>( "WiimoteID", _HELP( "Wiimote id" ) ),
                 {0},
             };
@@ -229,7 +229,7 @@ class CryVR_WiimoteRumble : public CFlowBaseNode<eNCT_Instanced>
             // Fill in configuration
             config.pInputPorts = inputs;
             config.pOutputPorts = outputs;
-            config.sDescription = _HELP( "CryVR node to set rumble" );
+            config.sDescription = _HELP( "CryVR node to toogle rumble" );
             config.SetCategory( EFLN_APPROVED );
         }
 
@@ -451,7 +451,7 @@ class CryVR_WiimoteBatteryLevel : public CFlowBaseNode<eNCT_Instanced>
             // Define input ports here, in same order as EInputPorts
             static const SInputPortConfig inputs[] =
             {
-                InputPortConfig<bool>( "Get", _HELP( "Activate" ) ),
+                InputPortConfig<bool>( "Get", _HELP( "Get battery level" ) ),
                 InputPortConfig<int>( "WiimoteID", _HELP( "Wiimote id" ) ),
                 {0},
             };
@@ -499,6 +499,87 @@ class CryVR_WiimoteBatteryLevel : public CFlowBaseNode<eNCT_Instanced>
 
 
 
+
+
+class CryVR_WiimoteLed : public CFlowBaseNode<eNCT_Instanced>
+{
+    public:
+
+        enum EInputPorts
+        {
+            EIP_Set = 0,
+            EIP_Get = 1,
+            EIP_WiimoteID = 2,
+            EIP_WiimoteMotionSensing = 3
+        };
+
+        enum EOutputPorts
+        {
+            EOP_Status
+        };
+
+
+        ////////////////////////////////////////////////////
+        CryVR_WiimoteLed( SActivationInfo* pActInfo ) {}
+        virtual ~ CryVR_WiimoteLed( void ) {}
+        virtual void Serialize( SActivationInfo* pActInfo, TSerialize ser ) {}
+
+        virtual void GetConfiguration( SFlowNodeConfig& config )
+        {
+            // Define input ports here, in same order as EInputPorts
+            static const SInputPortConfig inputs[] =
+            {
+                InputPortConfig<bool>( "Set", _HELP( "Activate" ) ),
+                InputPortConfig<int>( "WiimoteID", _HELP( "Wiimote id" ) ),
+                InputPortConfig<bool>( "Value", _HELP( "Led value" ) ),
+                {0},
+            };
+
+            // Define output ports here, in same order as EOutputPorts
+            static const SOutputPortConfig outputs[] =
+            {
+                OutputPortConfig<bool>( "Status", _HELP( "" ) ),
+                {0},
+            };
+
+            // Fill in configuration
+            config.pInputPorts = inputs;
+            config.pOutputPorts = outputs;
+            config.sDescription = _HELP( "CryVR node to activate / deactivate IR output values" );
+            config.SetCategory( EFLN_APPROVED );
+        }
+
+        ////////////////////////////////////////////////////
+        virtual void ProcessEvent( EFlowEvent event, SActivationInfo* pActInfo )
+        {
+            if ( event == eFE_Activate  && IsPortActive( pActInfo, 0 ) )
+            {
+                bool retour = CryVR_WiimoteManagerPlugin::SetLed( GetPortInt( pActInfo, 1 ), GetPortInt( pActInfo, 2 ) );
+                ActivateOutput( pActInfo, 0, retour );
+            }
+        }
+
+        virtual void GetMemoryStatistics( ICrySizer* s )
+        {
+            s->Add( *this );
+        }
+        virtual IFlowNodePtr Clone( SActivationInfo* pActInfo )
+        {
+            return new  CryVR_WiimoteLed( pActInfo );
+        }
+        virtual void GetMemoryUsage( ICrySizer* s ) const
+        {
+            s->Add( *this );
+        }
+
+};
+
+
+
+
+
+
+REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Led",  CryVR_WiimoteLed );
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:BatteryLevel",  CryVR_WiimoteBatteryLevel );
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:Stop", CFlowWiimoteStop );
 REGISTER_FLOW_NODE( "CryVR:Controlers:Wii_Plugin:IR",  CryVR_WiimoteIR );

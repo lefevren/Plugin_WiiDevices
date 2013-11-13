@@ -316,7 +316,7 @@ bool CryVR_WiimoteManagerPlugin::SetMotionSensing( bool value )
 
 
 
-bool CryVR_WiimoteManagerPlugin::SetLeds( int id, int led )
+bool CryVR_WiimoteManagerPlugin::SetLed( int id, int led )
 {
     if ( init )
     {
@@ -365,9 +365,9 @@ void CryVR_WiimoteManagerPlugin::GetConfiguration( SFlowNodeConfig& config )
         InputPortConfig<bool>( "Activate", _HELP( "Initialisation" ) ),
         InputPortConfig<bool>( "Ir_Above", true, _HELP( "IR position (Above or below)" ) ),
         //InputPortConfig<bool>("Motion_Sensing",true, _HELP("Motion sensing state")),
-        InputPortConfig<int>( "Threshold", 1 , _HELP( "Motion sensing state" ) ),
-        InputPortConfig<float>( "Angle", 0.5 , _HELP( "Motion sensing state" ) ),
-        InputPortConfig<int>( "Timeout", 20 , _HELP( "Motion sensing state" ) ),
+        InputPortConfig<int>( "Threshold", 1 , _HELP( "Threshold event generation" ) ),
+        InputPortConfig<float>( "Angle", 0.5 , _HELP( "Angle event generation" ) ),
+        InputPortConfig<int>( "Timeout", 20 , _HELP( "Event TTL in ms" ) ),
         InputPortConfig<int>( "Bluetooth_stack", 0 , _HELP( "Set bluetooth stack [0, Auto] [1, MS] [2, BlueSoleil]" ) ),
         InputPortConfig<bool>( "Aspect_ratio", true, _HELP( "Set Aspect Ratio : [false, 4/3] [true, 16/9]" ) ),
         InputPortConfig<int>( "IR_Sensivity", 3 , _HELP( "Set ir sensivity [0;5]" ) ),
@@ -399,7 +399,7 @@ void CryVR_WiimoteManagerPlugin::ProcessEvent( EFlowEvent event, SActivationInfo
         //Sleep(1000);
         while ( wiiuse_poll( wiimotes, CryVR_WiimoteManagerPlugin::found ) )
         {
-            CryLogAlways( "Event initial" );
+            CryLogAlways( "Initial Event" );
             Status( wiimotes[0] );
         }
 

@@ -37,7 +37,7 @@ class CryVR_WiimoteBalanceBoardControlerPlugin : public CFlowBaseNode<eNCT_Insta
 
         enum EInputPorts
         {
-            EIP_IsServer = 0,
+            EIP_Activate = 0,
             EIP_WiimoteID = 1,
             EIP_USE_CALIB = 2,
         };

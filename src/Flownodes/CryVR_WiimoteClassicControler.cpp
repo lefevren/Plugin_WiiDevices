@@ -29,7 +29,7 @@ class CryVR_WiimoteClassicControlerPlugin : public CFlowBaseNode<eNCT_Instanced>
 
         enum EInputPorts
         {
-            EIP_IsServer = 0,
+            EIP_Activate = 0,
             EIP_WiimoteID = 1,
             EIP_MAX_EVENTS = 2,
             EIP_FPS_FREE = 3,
