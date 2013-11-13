@@ -1,5 +1,8 @@
 WiiDevices Plugin for CryEngine SDK
 =====================================
+
+!!! FOR SMOOTH RESULTS, USE ONEEURO FILTER PLUGIN !!!
+
 Wii devices Plugin for CryEngine 3.5.4 
 
 Purpose of this plugin is to give the possibility to use Wii controlers inside CryEngine (Wiimote / motion plus, Nunchuk, Balance Board, Classic and Guitar Hero controler)
@@ -7,6 +10,8 @@ Purpose of this plugin is to give the possibility to use Wii controlers inside C
 Lastest version can be found here : https://github.com/lefevren/Plugin_WiiDevices
 
 This plugin is a part of a larger project : CryVR. For more information : https://github.com/lefevren/CryVR
+
+See wiki to learn more : https://github.com/lefevren/Plugin_WiiDevices/wiki
 
 
 Installation / Integration / Needs
